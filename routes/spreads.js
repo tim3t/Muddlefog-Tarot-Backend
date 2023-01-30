@@ -14,4 +14,13 @@ router.get('/:username', ensureCorrectUserOrAdmin, async function(req, res, next
 	}
 });
 
+router.post('/:username', ensureCorrectUserOrAdmin, async function(req, res, next) {
+	try {
+		const newSpread = await Spread.post(req.body);
+		return res.status(201).json({ newSpread });
+	} catch (err) {
+		return next(err);
+	}
+});
+
 module.exports = router;
