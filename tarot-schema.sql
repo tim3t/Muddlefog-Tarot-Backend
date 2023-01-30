@@ -6,3 +6,14 @@ CREATE TABLE users (
     email TEXT NOT NULL 
         CHECK (Position('@' IN email) > 1)
 )
+
+CREATE TABLE spreads (
+    id SERIAL PRIMARY KEY,
+    timedate TIMESTAMP,
+    title TEXT NOT NULL,
+    spread TEXT NOT NULL,
+    comments TEXT NOT NULL,
+    username VARCHAR(25)
+        REFERENCES users ON DELETE CASCADE
+    
+)
