@@ -9,7 +9,7 @@ CREATE TABLE users (
 
 CREATE TABLE spreads (
     id SERIAL PRIMARY KEY,
-    timedate TIMESTAMP,
+    timedate DATE,
     title TEXT NOT NULL,
     spread TEXT NOT NULL,
     comments TEXT NOT NULL,

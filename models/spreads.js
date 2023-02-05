@@ -21,6 +21,19 @@ class Spread {
 		let newSpread = result.rows[0];
 		return newSpread;
 	}
+
+	static async remove(id) {
+		const result = await db.query(
+			`DELETE
+		FROM spreads
+		WHERE id = $1
+		RETURNING id`,
+			[ id ]
+		);
+		const spread = result.rows[0];
+
+		if (!spread) throw error(`Not found`);
+	}
 }
 
 module.exports = Spread;

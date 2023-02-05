@@ -23,4 +23,13 @@ router.post('/:username', ensureCorrectUserOrAdmin, async function(req, res, nex
 	}
 });
 
+router.delete('/:username/:id', ensureCorrectUserOrAdmin, async function(req, res, next) {
+	try {
+		await Spread.remove(req.params.id);
+		return res.json({ deleted: +req.params.id });
+	} catch (err) {
+		return next(err);
+	}
+});
+
 module.exports = router;
