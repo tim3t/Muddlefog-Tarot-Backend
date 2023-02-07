@@ -1,5 +1,3 @@
-'use strict';
-
 /** Convenience middleware to handle common auth cases in routes. */
 
 const jwt_decode = require('jwt-decode');
